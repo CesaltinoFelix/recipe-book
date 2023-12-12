@@ -5,9 +5,10 @@
       <hr />
       <ul class="list-group">
         <a
+        *ngFor="let ingredient of ingredients; let index = index"
           class="list-group-item"
           style="cursor: pointer"
-          *ngFor="let ingredient of ingredients"
+        (click)="onRemoveItem(index)"
           >{{ ingredient.name }} ({{ ingredient.amount }})
         </a>
       </ul>

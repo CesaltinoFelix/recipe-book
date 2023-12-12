@@ -13,4 +13,8 @@ export class ShoppingListComponent {
     new IngredientModel('Apples', 5),
     new IngredientModel('Tomatoes', 10),
   ];
+
+   onRemoveItem(index : number): void{
+      this.ingredients.splice(index, 1);
+  }
 }
