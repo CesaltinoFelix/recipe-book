@@ -17,4 +17,7 @@ export class ShoppingListComponent {
    onRemoveItem(index : number): void{
       this.ingredients.splice(index, 1);
   }
+  addShoppingList($event:{name: string, amount: number}):void{
+     this.ingredients.push($event);
+  }
 }
