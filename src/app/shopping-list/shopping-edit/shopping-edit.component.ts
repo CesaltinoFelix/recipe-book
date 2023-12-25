@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { IngredientModel } from '../../shared/ingredient.model';
-import { IngredientsService } from '../../services/ingredients.service';
+import { IngredientModel } from '../../shared/models/ingredient.model';
+import { IngredientsService } from '../../shared/services/ingredients.service';
 
 @Component({
   selector: 'app-shopping-edit',
