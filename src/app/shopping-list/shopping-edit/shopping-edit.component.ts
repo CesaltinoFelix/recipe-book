@@ -4,23 +4,21 @@ import { IngredientModel } from '../../shared/ingredient.model';
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
-  styleUrl: './shopping-edit.component.css'
+  styleUrl: './shopping-edit.component.css',
 })
 export class ShoppingEditComponent {
   @Output() onAddedShoppingList = new EventEmitter<IngredientModel>();
   name: string;
   amount: number;
 
-  onAddShoppingList():void{
-    this.onAddedShoppingList.emit({
-      name: this.name,
-      amount: this.amount
-    });
+  onAddShoppingList(): void {
+    const newIngredient = new IngredientModel(this.name, this.amount);
+    this.onAddedShoppingList.emit(newIngredient);
     this.name = '';
     this.amount = 0;
   }
 
-  onClearInPuts():void{
+  onClearInPuts(): void {
     this.name = '';
     this.amount = 0;
   }
