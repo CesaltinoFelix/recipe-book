@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IngredientModel } from '../shared/ingredient.model';
+import { IngredientsService } from '../services/ingredients.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,17 +8,13 @@ import { IngredientModel } from '../shared/ingredient.model';
   styleUrl: './shopping-list.component.css'
 })
 export class ShoppingListComponent {
-  ingredients: IngredientModel[] = [
-    new IngredientModel('Rice', 1),
-    new IngredientModel('Beans', 12),
-    new IngredientModel('Apples', 5),
-    new IngredientModel('Tomatoes', 10),
-  ];
+ ingredients : IngredientModel[] = this.ingredientService.ingredients; 
+  constructor(private ingredientService: IngredientsService){
+
+  }
 
    onRemoveItem(index : number): void{
-      this.ingredients.splice(index, 1);
+      this.ingredientService.onRemoveIngredient(index);
   }
-  addShoppingList($event: IngredientModel):void{
-     this.ingredients.push($event);
-  }
+
 }
