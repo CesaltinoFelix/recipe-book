@@ -21,4 +21,8 @@ export class IngredientsService {
   onRemoveIngredient(index: number) {
     this.ingredients.splice(index, 1);
   }
+
+  onAddShoppingListIngredient(ingredients: IngredientModel[]):void{
+    this.ingredients.push(...ingredients);
+  }
 }
