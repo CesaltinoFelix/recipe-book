@@ -22,7 +22,16 @@ export class IngredientsService {
     this.ingredients.splice(index, 1);
   }
 
-  onAddShoppingListIngredient(ingredients: IngredientModel[]):void{
-    this.ingredients.push(...ingredients);
+  onAddShoppingListIngredient(ingredients: IngredientModel[]): void {
+    for (let newIngredient of ingredients) {
+      const existingIngredientIndex = this.ingredients.findIndex(
+        (ingredient) => ingredient.name === newIngredient.name
+      );
+
+      if (existingIngredientIndex === -1) this.ingredients.push(newIngredient);
+      else
+        this.ingredients[existingIngredientIndex].amount +=
+          newIngredient.amount;
+    }
   }
 }
