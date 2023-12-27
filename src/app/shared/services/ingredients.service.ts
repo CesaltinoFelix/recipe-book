@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { IngredientModel } from '../models/ingredient.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IngredientsService {
-  ingredients: IngredientModel[] = [
+
+  ingredientChanged = new EventEmitter<IngredientModel[]>();
+  private ingredients: IngredientModel[] = [
     new IngredientModel('Rice', 1),
     new IngredientModel('Beans', 12),
     new IngredientModel('Apples', 5),
@@ -14,12 +16,20 @@ export class IngredientsService {
 
   constructor() {}
 
+  @Output() 
+
+  getIngredients(): IngredientModel[]{
+    return this.ingredients.slice();
+  }
+
   onAddIngredient(ingredient: IngredientModel): void {
     this.ingredients.push(ingredient);
+    this.ingredientChanged.emit(this.ingredients.slice());
   }
 
   onRemoveIngredient(index: number) {
     this.ingredients.splice(index, 1);
+    this.ingredientChanged.emit(this.ingredients.slice());
   }
 
   onAddShoppingListIngredient(ingredients: IngredientModel[]): void {
@@ -33,5 +43,7 @@ export class IngredientsService {
         this.ingredients[existingIngredientIndex].amount +=
           newIngredient.amount;
     }
+
+    this.ingredientChanged.emit(this.ingredients.slice());
   }
 }
