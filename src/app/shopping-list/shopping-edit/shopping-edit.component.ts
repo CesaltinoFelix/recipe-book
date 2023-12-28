@@ -14,9 +14,8 @@ export class ShoppingEditComponent {
   constructor(private ingredientService: IngredientsService) {}
   onAddShoppingList(): void {
     const newIngredient = new IngredientModel(this.name, this.amount);
-    this.ingredientService.onAddIngredient(newIngredient);
-    this.name = '';
-    this.amount = 0;
+    this.ingredientService.onAddShoppingListIngredient([newIngredient]);
+    this.onClearInPuts();
   }
   onClearInPuts(): void {
     this.name = '';

@@ -5,7 +5,6 @@ import { IngredientModel } from '../models/ingredient.model';
   providedIn: 'root',
 })
 export class IngredientsService {
-
   ingredientChanged = new EventEmitter<IngredientModel[]>();
   private ingredients: IngredientModel[] = [
     new IngredientModel('Rice', 1),
@@ -16,15 +15,9 @@ export class IngredientsService {
 
   constructor() {}
 
-  @Output() 
-
-  getIngredients(): IngredientModel[]{
+  @Output()
+  getIngredients(): IngredientModel[] {
     return this.ingredients.slice();
-  }
-
-  onAddIngredient(ingredient: IngredientModel): void {
-    this.ingredients.push(ingredient);
-    this.ingredientChanged.emit(this.ingredients.slice());
   }
 
   onRemoveIngredient(index: number) {

@@ -7,8 +7,4 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent {
   collapsed = true;
-  @Output() onRoute = new EventEmitter <string>();
-  onSelect(route: string){
-    this.onRoute.emit(route);
-  }
 }
